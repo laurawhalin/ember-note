@@ -7,7 +7,8 @@ export default Ember.Route.extend({
   actions: {
     addNote: function() {
       this.store.findRecord('notebook',
-        this.paramsFor('notebooks.notes'.notebook_id).then((notebook) => {
+        this.paramsFor('notebooks.notes').notebook_id).then(
+          (notebook) => {
             console.log(notebook);
             var note = this.store.createRecord('note', {
               title : this.controller.get('title'),
