@@ -16,13 +16,12 @@ module.exports = function(app) {
   });
 
   notesRouter.post('/', function(req, res) {
-    noteDB.nfind({}).sort({id : -1}).limit(1).exec(function(err,notes) {
+    noteDB.find({}).sort({id : -1}).limit(1).exec(function(err,notes) {
       if(notes.length != 0)
         req.body.note.id = notes[0].id + 1;
       else
         req.body.note.id = 1;
-      noteDB.insert(req.body.note,function(err,newNote)
-    {
+      noteDB.insert(req.body.note,function(err,newNote) {
         res.status(201);
         res.send(
           JSON.stringify(
@@ -55,7 +54,7 @@ module.exports = function(app) {
   });
 
   notesRouter.delete('/:id', function(req, res) {
-    var id = parse(nt(req.params.id);
+    var id = parseInt(req.params.id);
     noteDB.remove({id: id}, function(err,numRemoved) {
       res.status(204).end();
     });

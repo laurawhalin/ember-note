@@ -17,7 +17,7 @@ module.exports = function(app) {
 
   notebooksRouter.post('/', function(req, res) {
     notebookDB.find({}).sort({id : -1}).limit(1).exec(
-      fuction(err,notebooks) {
+      function(err,notebooks) {
         if(notebooks.length != 0)
           req.body.notebook.id = notebooks[0].id + 1;
         else
