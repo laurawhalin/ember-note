@@ -1,7 +1,7 @@
 <div class="col-md-12">
-  Register new user: {{input value=name}}
-  <button {{action 'addNew'}}>Add</button>
+  Register new user: {{input id='name' value=name}}
+  <button id='register' {{action 'addNew'}}>Add</button>
 </div>
-<div class="col-md-12">
+<div id='message' class="col-md-12">
   {{message}}
 </div>
