@@ -6,7 +6,7 @@ export function initialize(registry, application) {
       console.log(message);
     }
   });
-  application.register('logger:main', logger):
+  application.register('logger:main', logger);
   application.inject('route','logger','logger:main');
 }
 
